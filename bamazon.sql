@@ -42,3 +42,5 @@ VALUES ("Raw Honey", "Food", 16, 40);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Chocolate", "Food", 9.99, 100);
+
+SELECT * FROM products;
