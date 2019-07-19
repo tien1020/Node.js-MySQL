@@ -47,8 +47,9 @@ function runSearch(){
              function(err, res) {
           if (err) throw err;
           for(var i=0; i< res.length; i++){
-          if(res[i].stock_quantity <0){
+          if(res[i].stock_quantity < answer.quantity){
               console.log("Insufficient quantity!")
+              runSearch();
           }
           else{
           console.log("ID:",res[i].item_id,"\n",
