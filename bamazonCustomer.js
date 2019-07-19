@@ -34,11 +34,26 @@ function runSearch() {
             name: "itemwant",
             type: "input",
             message: "What would you like to buy? Type the product ID here: ",
-
+            validate: function(value){
+                if(isNaN(value)){
+                    return false
+                }
+                else{
+                    return true
+                }
+            }
         }, {
             name: "quantity",
             type: "input",
-            message: "Enter the quantity:"
+            message: "Enter the quantity:",
+            validate: function(value){
+                if(isNaN(value)){
+                    return false
+                }
+                else{
+                    return true
+                }
+            }
         }])
         .then(function (answer) {
 
@@ -54,7 +69,7 @@ function runSearch() {
                         else {
                             console.log("ID:", res[i].item_id, "\n",
                                 "Product:", res[i].product_name, "\n",
-                                "Price:", res[i].price,"per item", "\n",
+                                "Price: $", res[i].price,"per item", "\n",
                                 "Quantity:", answer.quantity)
                             console.log("Total: $", res[i].price * answer.quantity)
                         }
@@ -62,4 +77,4 @@ function runSearch() {
                     }
                 })
             })
-}
+};
