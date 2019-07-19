@@ -23,12 +23,49 @@ function tabledisplay(){
         if(err) throw err;
         
             console.table(res);
-                // "ID:", res[i].item_id, "Product:", res[i].product_name, "Price:", res[i].price);
          
           runSearch();
     });
 }
 
 function runSearch(){
+    inquirer
+    .prompt([{
+      name: "itemwant",
+      type: "input",
+      message: "What would you like to buy? Type the product ID here: ",
+     
+    },{
+        name: "quantity",
+        type: "input",
+        message: "Enter the quantity:"
+    }])
+    .then(function(answer) {
+        
+        var query = "SELECT products.item_id, products.product_name, department_name, price, stock_quantity FROM products WHERE ?";
+        connection.query(query, { item_id: answer.itemwant },
+             function(err, res) {
+          if (err) throw err;
+          for(var i=0; i< res.length; i++){
+          if(res[i].stock_quantity <0){
+              console.log("Insufficient quantity!")
+          }
+          else{
+          console.log("ID:",res[i].item_id,"\n",
+           "Product:", res[i].product_name,"\n",
+            "Price:", res[i].price,"\n",
+             "Quantity:", answer.quantity)
+          console.log ("Total: $", res[i].price*answer.quantity)
 
+
+
+            }
+              
+        }
+          }
+        )
+
+
+
+})
 }
