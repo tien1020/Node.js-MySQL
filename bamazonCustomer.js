@@ -63,7 +63,7 @@ function runSearch() {
                     if (err) throw err;
                     for (var i = 0; i < res.length; i++) {
                         if (res[i].stock_quantity < answer.quantity) {
-                            console.log("Insufficient quantity!")
+                            console.log("Insufficient quantity! Please enter the remaining quantity.")
                             runSearch();
                         }
                         else {
@@ -72,9 +72,13 @@ function runSearch() {
                                 "Price: $", res[i].price,"per item", "\n",
                                 "Quantity:", answer.quantity)
                             console.log("Total: $", res[i].price * answer.quantity)
+                            
                         }
 
                     }
+                   
                 })
             })
+
+          
 };

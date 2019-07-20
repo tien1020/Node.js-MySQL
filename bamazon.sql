@@ -8,7 +8,7 @@ CREATE TABLE products (
   product_name VARCHAR(100) NULL,
   department_name VARCHAR(100) NULL,
   price DECIMAL(10,2) NULL,
-  stock_quantity INT NULL
+  stock_quantity INT NULL,
   
   PRIMARY KEY (item_id)
 );
@@ -23,7 +23,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Satchel","Acessories", 100.89, 50);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Dior Purfume", "Cosmetics", 120.50, 60);
+VALUES ("Dior Purfume", "Cosmetics", 120.50, 10);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("YSL Lipstick", "Cosmetics", 38.60, 120);
